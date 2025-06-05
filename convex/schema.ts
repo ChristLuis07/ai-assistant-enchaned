@@ -15,7 +15,7 @@ export default defineSchema({
         name:v.string(),
         title:v.string(),
         image:v.string(),
-        iinstructin:v.string(),
+        instruction:v.string(),
         userInstruction:v.string(),
         sampleQuestions:v.any(),
         uid:v.id("users"),
