@@ -19,7 +19,7 @@ function Provider({
       <AuthContext.Provider value={{user, setUser}}>
     <NextThemesProvider
     attribute="class"
-    defaultTheme='system'
+    defaultTheme="light"
     enableSystem
     disableTransitionOnChange>
     <div>{children}</div>

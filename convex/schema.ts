@@ -1,5 +1,6 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
+import { samp } from "motion/react-client";
 
 export default defineSchema({
     users:defineTable({
@@ -8,5 +9,15 @@ export default defineSchema({
         picture:v.string(),
         credits:v.number(),
         orderId:v.optional(v.string()),
+    }),
+    userAiAssistants:defineTable({
+        id:v.number(),
+        name:v.string(),
+        title:v.string(),
+        image:v.string(),
+        iinstructin:v.string(),
+        userInstruction:v.string(),
+        sampleQuestions:v.any(),
+        uid:v.id("users"),
     })
 })
