@@ -10,6 +10,7 @@ export const InsertSelectedAssistants = mutation({
         const insertedIds = await Promise.all(
             args.records.map(async (record:any) => await ctx.db.insert("userAiAssistants",{
                 ...record,
+                aiModelId:'OpenAI: GPT-4o-mini',
                 uid:args.uid
             }) 
             )
@@ -21,6 +22,7 @@ export const InsertSelectedAssistants = mutation({
 
 export const GetAllUserAssistants = query({
     args: {
+
         uid:v.id('users')
         
     },
@@ -29,5 +31,30 @@ export const GetAllUserAssistants = query({
             .filter(q=> q.eq(q.field('uid'),args.uid))
             .collect();
             return result;
+    }
+})
+
+export const UpdateUserAiAssistant = mutation({
+    args: {
+        id:v.id('userAiAssistants'),
+        userInstruction:v.string(),
+        aiModelId:v.string(),
+    },
+    handler: async (ctx, args) => {
+        const result = await ctx.db.patch(args.id, {
+            aiModelId: args.aiModelId,
+            userInstruction: args.userInstruction
+        });
+
+        return result;
+    }
+})
+
+export const DeeteAssistant = mutation({
+    args:{
+        id:v.id('userAiAssistants')
+    },
+    handler: async (ctx, args) => {
+        await ctx.db.delete(args.id);
     }
 })

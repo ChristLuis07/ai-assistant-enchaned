@@ -11,6 +11,7 @@ import AiAssistantsList from '@/services/AiAssistantsList';
 import { div } from 'motion/react-client';
 import Image from 'next/image';
 import { AssistantContext } from '@/context/AssistantContext';
+import { BlurFade } from '@/components/magicui/blur-fade';
 
 function AssistantList() {
     const {user} = useContext(AuthContext);
@@ -19,7 +20,7 @@ function AssistantList() {
     const {assistant,setAssistant} = useContext(AssistantContext);
     useEffect(() => {
        user &&GetUserAssistants();
-     }, [user])
+     }, [user && assistant==null])
    
      const GetUserAssistants= async () => {
        const result = await convex.query(api.userAiAssistants.GetAllUserAssistants, {
@@ -35,6 +36,7 @@ function AssistantList() {
         <Input className='bg-white mt-3' placeholder='Search'/>
         <div className='mt-5'>
             {assistantList.map((assistant_, index) => (
+                <BlurFade key={assistant_.image}  delay={0.25 + index * 0.05}>
                 <div className={`p-2 flex gap-3 items-center hover:bg-gray-200 hover:dark:bg-slate-700 
                     rounded-xl cursor-pointer mt-2
                     ${assistant_.id==assistant?.id&&'bg-gray-200'}`} 
@@ -47,6 +49,7 @@ function AssistantList() {
                         <h2 className='text-gray-600 text-sm dark:text-gray-300'>{assistant_.title}</h2>
                     </div>
                 </div>
+                </BlurFade>
             ))}
         </div>
         <div className='absolute bottom-0 flex gap-3 items-center 

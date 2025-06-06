@@ -14,14 +14,6 @@ function Header() {
             width={50}
             height={50}
         />
-
-        {user?.picture&& <Image 
-            src={user?.picture}
-            alt='user Image'
-            width={50}
-            height={50}
-            className='rounded-full'
-        />}
     </div>
   )
 }
