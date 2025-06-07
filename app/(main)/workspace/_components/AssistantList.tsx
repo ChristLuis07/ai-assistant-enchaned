@@ -85,6 +85,7 @@ function AssistantList() {
         <DropdownMenuContent className='w-[200px]'>
            <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
+            
             <DropdownMenuItem onClick={()=>setOpenProfile(true)}><UserCircle2 />Profile</DropdownMenuItem>
              <DropdownMenuItem><LogOut />Logout</DropdownMenuItem>
             </DropdownMenuContent>
