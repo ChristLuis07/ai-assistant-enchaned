@@ -10,6 +10,10 @@ import { Loader2Icon, Send } from 'lucide-react';
 import AiModelOptions from '@/services/AiModelOptions';
 import axios from 'axios';
 import Image from 'next/image';
+import { useMutation } from 'convex/react';
+import { api } from '@/convex/_generated/api';
+import { AuthContext } from '@/context/AuthContext';
+import { ASSISTANT } from '../../ai-assistants/page';
 
 type MESSAGE = {
    role:string,
@@ -22,6 +26,8 @@ function ChatUi() {
     const [messages, setMessages] = useState<MESSAGE[]>([]);
     const [loading, setLoading] = useState(false);
     const chatRef= useRef<any>(null);
+    const {user,setUser} = useContext(AuthContext);
+    const UpdateTokens = useMutation(api.users.UpdateTokens);
     useEffect(() => {
         if(chatRef.current) {
           chatRef.current.scrollTop = chatRef.current.scrollHeight
@@ -57,9 +63,16 @@ function ChatUi() {
       updateUserToken(result.data?.content)
     }
 
-    const updateUserToken =(resp:string) => {
+    const updateUserToken = async (resp:string) => {
         const tokenCount = resp.trim()?resp.trim().split(/\s+/).length:0
-        
+        const result = await UpdateTokens({
+          credits:user?.credits-tokenCount,
+          uid:user?._id
+        });
+        setUser((prev:ASSISTANT)=>({
+          ...prev,
+          credits:user?.credits-tokenCount,
+        }));
     }
   return (
     <div className='mt-20 p-6 relative h-[88vh]'>
