@@ -41,7 +41,7 @@ function Profile({openDialog,setOpenDialog}:any) {
             <div className='flex flex-col gap-2'>
                 <h2 className='font-bold'>Token Usage</h2>
                 <h2>0/0</h2>
-                <Progress value={user?.credits} max={user?.orderId?10000:50000} />
+                <Progress value={user?.credits} />
                 <h2 className='flex justify-between mt-2 text-lg'>Current Plan 
                     <span className='p-1 bg-gray-100 rounded-md px-2 font-normal'>{!user?.orderId?'Free Plan':'Pro Plan'}</span>
                 </h2>
