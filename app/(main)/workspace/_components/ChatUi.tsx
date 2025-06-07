@@ -56,8 +56,8 @@ function ChatUi() {
       setMessages(prev=>[...prev, result.data]);
     }
 
-    const updateUserToken =() => {
-
+    const updateUserToken =(resp:string) => {
+        const tokenCount = resp.trim()?resp.trim().split(/\s+/).length:0
     }
   return (
     <div className='mt-20 p-6 relative h-[88vh]'>
