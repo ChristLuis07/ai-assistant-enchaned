@@ -14,7 +14,7 @@ import {
 function ConfirmationAlert({children,OnDelete}:any) {
   return (
     <AlertDialog>
-        <AlertDialogTrigger>{children}</AlertDialogTrigger>
+        <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
         <AlertDialogContent>
             <AlertDialogHeader>
                 <AlertDialogTitle>Kamu Yakin untuk Menghapus assistant ini?</AlertDialogTitle>

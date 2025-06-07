@@ -12,12 +12,25 @@ import { div } from 'motion/react-client';
 import Image from 'next/image';
 import { AssistantContext } from '@/context/AssistantContext';
 import { BlurFade } from '@/components/magicui/blur-fade';
+import AddNewAssistant from './AddNewAssistant';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { LogOut, UserCircle2 } from 'lucide-react';
+import Profile from './Profile';
 
 function AssistantList() {
     const {user} = useContext(AuthContext);
     const convex = useConvex();
     const [assistantList,setAssistantList] = useState<ASSISTANT[]>([]);
     const {assistant,setAssistant} = useContext(AssistantContext);
+    const [loading,setLoading] = useState(false);
+    const [openProfile,setOpenProfile] = useState(false);
     useEffect(() => {
        user &&GetUserAssistants();
      }, [user && assistant==null])
@@ -32,7 +45,11 @@ function AssistantList() {
   return (
     <div className='p-5 bg-secondary border-2-[1px] h-screen relative'>
         <h2 className='font-bold text-lg'>List Ai Assistant yang kamu pilih</h2>
+
+        <AddNewAssistant>
         <Button className='w-full mt-3'>+ Tambah Assistant Baru</Button>
+        </AddNewAssistant>
+        
         <Input className='bg-white mt-3' placeholder='Search'/>
         <div className='mt-5'>
             {assistantList.map((assistant_, index) => (
@@ -52,6 +69,8 @@ function AssistantList() {
                 </BlurFade>
             ))}
         </div>
+        <DropdownMenu>
+      <DropdownMenuTrigger asChild>
         <div className='absolute bottom-0 flex gap-3 items-center 
         hover:bg-gray-200 w-[87%] p-2 rounded-xl cursor-pointer'>
             <Image src={user?.picture} alt='user' width={35} height={35}
@@ -62,6 +81,15 @@ function AssistantList() {
             <h2 className='text-gray-400'>{user?.orderId?'Pro Plan':'Free Plan'}</h2>
             </div>
         </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className='w-[200px]'>
+           <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={()=>setOpenProfile(true)}><UserCircle2 />Profile</DropdownMenuItem>
+             <DropdownMenuItem><LogOut />Logout</DropdownMenuItem>
+            </DropdownMenuContent>
+      </DropdownMenu>
+      <Profile openDialog={openProfile} setOpenDialog={setOpenProfile}/>
     </div>
   )
 }

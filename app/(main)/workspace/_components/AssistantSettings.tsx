@@ -23,7 +23,7 @@ import { BlurFade } from '@/components/magicui/blur-fade';
 function AssistantSettings() {
     const {assistant,setAssistant} = useContext(AssistantContext);
     const UpdateAssistant = useMutation(api.userAiAssistants.UpdateUserAiAssistant);
-    const DeleteAssistant = useMutation(api.userAiAssistants.DeeteAssistant);
+    const DeleteAssistant = useMutation(api.userAiAssistants.DeleteAssistant);
     const [loading,setLoading] = useState(false);
     const onHandleInputChange =(field:string,value:string) => {
         setAssistant((prev:any) => ({
