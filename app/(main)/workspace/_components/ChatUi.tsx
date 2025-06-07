@@ -55,6 +55,10 @@ function ChatUi() {
       setMessages(prev=>prev.slice(0, -1));
       setMessages(prev=>[...prev, result.data]);
     }
+
+    const updateUserToken =() => {
+
+    }
   return (
     <div className='mt-20 p-6 relative h-[88vh]'>
         {messages?.length == 0 && <EmptyChatState />}
