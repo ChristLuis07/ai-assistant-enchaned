@@ -23,6 +23,7 @@ export type ASSISTANT = {
   userInstruction: string,
   sampleQuestions: string[],
   aiModelId?:string,
+  
 }
 function AIAssistants() {
   const [selectedAssistan,setSelectedAssistant] = useState<ASSISTANT[]>([]);
