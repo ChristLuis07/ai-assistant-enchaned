@@ -1,18 +1,30 @@
 {
+  // Gunakan Prettier sebagai default formatter
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Format otomatis saat save
   "editor.formatOnSave": true,
+
+  // Format untuk file TypeScript React (.tsx)
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Format untuk file JavaScript
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+
+  // Format untuk file TypeScript
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+
+  // Format untuk file JSON
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // Tambahan opsional lainnya:
-  "prettier.singleQuote": true,
-  "prettier.semi": false,
-  "prettier.tabWidth": 2,
-  "prettier.trailingComma": "es5"
+
+  // Jika pakai ESLint dan tidak ingin konflik
+  "eslint.format.enable": false
 }
