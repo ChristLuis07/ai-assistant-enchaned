@@ -62,6 +62,7 @@ function AddNewAssistant({children}: any) {
     toast('Please enter all details');
     return;
     }
+    
     setLoading(true)
     const result = await AddAssistant({
         records:[selectedAssistant],
