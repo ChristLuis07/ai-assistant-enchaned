@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       role: "assistant",
       content: "Terjadi kesalahan saat mengambil jawaban dari model.",
+      
     }, { status: 500 });
   }
 }
