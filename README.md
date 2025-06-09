@@ -5,9 +5,9 @@ project ini dibuat untuk tugas presentasi bahasa inggris
    git clone https://github.com/christianLuis07/ai-assistant-enchaned.git
    cd ai-assistant-enchaned
 
-2.Install Dependecies
-npm install
-or
+2.Install Dependecies <br/>
+npm install <br/>
+or <br/>
 yarn install
 
 3. Setup Environment Variables
@@ -17,7 +17,7 @@ GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 NEXTAUTH_SECRET=your_auth_secret
 
-4.Run the Development Server
-npm run dev
-or
-yarn dev
+4.Run the Development Server <br/>
+npm run dev <br/>
+or <br/>
+yarn dev <br/>
