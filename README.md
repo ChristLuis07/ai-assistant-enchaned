@@ -7,7 +7,7 @@ project ini dibuat untuk tugas presentasi bahasa inggris
 
 2.Install Dependecies
 npm install
-# or
+or
 yarn install
 
 3. Setup Environment Variables
@@ -19,5 +19,5 @@ NEXTAUTH_SECRET=your_auth_secret
 
 4.Run the Development Server
 npm run dev
-# or
+or
 yarn dev
